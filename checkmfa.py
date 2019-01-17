@@ -1,6 +1,7 @@
 import boto3
 def lambda_handler(context,event):
    
+   #declare iam & sns clients
     client                  = boto3.client('iam')
     sns                     = boto3.client('sns')
     response                = client.list_users()
@@ -8,8 +9,7 @@ def lambda_handler(context,event):
     mfaNotEnabled           = []
     mfaEnabled              = []
     physicalString          = ''
-    
-
+  
            
     # loop through users to find MFA
     for user in response['Users']:
